@@ -7,9 +7,9 @@ const lti = require('ltijs').Provider
 
 // Setup
 lti.setup(
-  "HELLO",
+  process.env.LTI_KEY,
   { // Database configuration
-    url: 'mongodb://localhost:27017/lti-content-test'
+    url: process.env.DB_URL
   },
   { // Options
     appRoute: '/lti/launch', loginRoute: '/lti/login', keysetRoute: "/lti/keys", // Optionally, specify some of the reserved routes
@@ -51,7 +51,7 @@ lti.app.use(routes)
 
 // Setup function
 const setup = async () => {
-  await lti.deploy({ port: 3000 })
+  await lti.deploy({ port: process.env.PORT })
 
   /**
    * Register platform

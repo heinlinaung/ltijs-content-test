@@ -57,7 +57,7 @@ const setup = async () => {
    * Register platform
    */
   const platform = await lti.registerPlatform({
-    url: 'https://canvas.instructure.com/',
+    url: 'https://canvas-temp.pagewerkz.com',
     name: 'ltijs-content-test',
     clientId: '10000000000016',
     authenticationEndpoint: 'https://canvas-temp.pagewerkz.com/api/lti/authorize_redirect',

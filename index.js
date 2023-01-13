@@ -14,8 +14,8 @@ lti.setup(
   { // Options
     appRoute: '/lti/launch', loginRoute: '/lti/login', keysetRoute: "/lti/keys", // Optionally, specify some of the reserved routes
     cookies: {
-      secure: false, // Set secure to true if the testing platform is in a different domain and https is being used
-      sameSite: '' // Set sameSite to 'None' if the testing platform is in a different domain and https is being used
+      secure: true, // Set secure to true if the testing platform is in a different domain and https is being used
+      sameSite: 'None' // Set sameSite to 'None' if the testing platform is in a different domain and https is being used
     },
     devMode: true // Set DevMode to false if running in a production environment with https
   }
@@ -52,22 +52,22 @@ lti.app.use(routes)
 // Setup function
 const setup = async () => {
   await lti.deploy({ port: process.env.PORT })
-
+  console.log('deployeeeed')
   /**
    * Register platform
    */
-  const platform = await lti.registerPlatform({
-    url: 'https://canvas-temp.pagewerkz.com',
-    name: 'ltijs-content-test',
-    clientId: '10000000000016',
-    authenticationEndpoint: 'https://canvas-temp.pagewerkz.com/api/lti/authorize_redirect',
-    accesstokenEndpoint: 'https://canvas-temp.pagewerkz.com/api/login/oauth2/token',
-    authConfig: {
-      method: 'JWK_SET',
-      key: 'https://canvas-temp.pagewerkz.com/api/lti/security/jwks'
-    }
-  })
-  console.log(await platform.platformPublicKey())
+//   const platform = await lti.registerPlatform({
+//     url: 'https://canvas-temp.pagewerkz.com',
+//     name: 'ltijs-content-test',
+//     clientId: '10000000000016',
+//     authenticationEndpoint: 'https://canvas-temp.pagewerkz.com/api/lti/authorize_redirect',
+//     accesstokenEndpoint: 'https://canvas-temp.pagewerkz.com/api/login/oauth2/token',
+//     authConfig: {
+//       method: 'JWK_SET',
+//       key: 'https://canvas-temp.pagewerkz.com/api/lti/security/jwks'
+//     }
+//   })
+//   console.log(await platform.platformPublicKey())
 }
 
 setup()
